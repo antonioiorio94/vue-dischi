@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AppHeader />
-    <RecordList />
+    <RecordList :url="dataUrl" />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     AppHeader,
     RecordList,
+  },
+  data() {
+    return {
+      dataUrl: "https://flynn.boolean.careers/exercises/api/array/music",
+    };
   },
 };
 </script>
