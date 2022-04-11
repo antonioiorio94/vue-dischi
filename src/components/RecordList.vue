@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container mt-3">
     <div v-if="records.length > 0" class="row justify-content-between">
       <RecordItem
         class="col-12 col-md-4 col-xl-2"

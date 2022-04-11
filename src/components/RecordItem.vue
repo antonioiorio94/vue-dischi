@@ -32,7 +32,7 @@ export default {
 .card {
   text-align: center;
   background-color: $main-color;
-  margin: 1rem;
+  margin: 0.5rem;
   img {
     padding: 20px;
   }
