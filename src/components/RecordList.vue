@@ -1,5 +1,8 @@
 <template>
   <div class="container mt-3">
+    <div class="col-12">
+      <SearchComponent />
+    </div>
     <div v-if="records.length > 0" class="row justify-content-between">
       <RecordItem
         class="col-12 col-md-4 col-xl-2"
@@ -14,6 +17,7 @@
 <script>
 import axios from "axios";
 import RecordItem from "@/components/RecordItem.vue";
+import SearchComponent from "@/components/SearchComponent.vue";
 
 export default {
   name: "RecordList",
@@ -27,6 +31,7 @@ export default {
   },
   components: {
     RecordItem,
+    SearchComponent,
   },
   mounted() {
     this.loadData();
