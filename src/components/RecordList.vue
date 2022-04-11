@@ -1,24 +1,17 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 col-xl-3">
-        <RecordItem :record="records" />
-      </div>
+  <div class="container mt-5">
+    <div v-if="records.length > 0" class="row justify-content-between">
+      <RecordItem
+        class="col-12 col-md-4 col-xl-2"
+        v-for="item in records"
+        :key="item.id"
+        :record="item"
+      />
     </div>
   </div>
 </template>
 
 <script>
-/*
-ESEMPIO DATA
-
-author: "Bon Jovi"
-genre: "Rock"
-poster: "https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg"
-title: "New Jersey"
-year: "1988"
-*/
-
 import axios from "axios";
 import RecordItem from "@/components/RecordItem.vue";
 
@@ -26,7 +19,7 @@ export default {
   name: "RecordList",
   data() {
     return {
-      records: Object,
+      records: [],
     };
   },
   props: {
@@ -44,8 +37,8 @@ export default {
         .get(this.url)
         .then((response) => {
           if (response.status === 200) {
-            this.records = response.data;
-            console.log(this.records);
+            this.records = response.data.response;
+            console.log(this.records[1]);
           }
         })
         .catch((error) => {
