@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3">
     <div class="col-12">
-      <SearchComponent />
+      <SearchComponent @search="filterByName" />
     </div>
     <div v-if="records.length > 0" class="row justify-content-between">
       <RecordItem
@@ -49,6 +49,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    filterByName(searchedText) {
+      console.log(searchedText);
     },
   },
 };

@@ -2,11 +2,11 @@
   <div>
     <input
       type="text"
-      placeholder="Cosa vuoi sentire?"
-      v-model="inputText"
+      placeholder="Cosa vuoi ascoltare?"
+      v-model.trim="inputText"
       @keyup.enter="$emit('search', inputText)"
     />
-    <button @click="performSearch()">Cerca</button>
+    <button @click.prevent="performSearch()">Cerca</button>
   </div>
 </template>
 
