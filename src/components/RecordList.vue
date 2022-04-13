@@ -6,7 +6,7 @@
     <div v-if="records.length > 0" class="row justify-content-between">
       <RecordItem
         class="col-12 col-md-4 col-xl-2"
-        v-for="item in records"
+        v-for="item in filteredList"
         :key="item.id"
         :record="item"
       />
@@ -24,10 +24,23 @@ export default {
   data() {
     return {
       records: [],
+      searchedText: "",
     };
   },
   props: {
     url: String,
+  },
+  computed: {
+    filteredList() {
+      if (this.searchedText === 0) {
+        return this.records;
+      }
+      return this.records.filter(
+        (item) =>
+          item.author.toLowerCase().includes(this.searchedText.toLowerCase()) ||
+          item.title.toLowerCase().includes(this.searchedText.toLowerCase())
+      );
+    },
   },
   components: {
     RecordItem,
@@ -52,6 +65,7 @@ export default {
     },
     filterByName(searchedText) {
       console.log(searchedText);
+      this.searchedText = searchedText;
     },
   },
 };
